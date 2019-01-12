@@ -1,0 +1,16 @@
+
+当在Servlet的doGet等重载方法中调用super.doGet父类的实现就会出现这个错误
+
+HTTP Status 405 – Method Not Allowed
+Message HTTP method GET is not supported by this URL
+Description The method received in the request-line is known by the origin server but not supported by the target resource.
+
+HTTP 405错误：请求行中指定的请求方法不能被用于请求相应的资源。该响应必须返回一个Allow 头信息用以表示出当前资源能够接受的请求方法的列表。
+
+我的理解：因为我们在web.xml或注解中用url映射到我们定义的servlet中，当调用父类的方法后，那url对应不上我们定义的servlet了
+
+// https://www.cnblogs.com/kenticny/archive/2012/06/03/2533050.html
+
+
+
+对servlet 3动态加载servlet的机制只能在webapp启动在初始化时进行完成注册,不能在运行时注册，可能是为了安全考虑吧.
